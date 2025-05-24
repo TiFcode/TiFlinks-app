@@ -1,0 +1,53 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# Built application files
+*.o
+*.ko
+*.obj
+*.objd
+*.objf
+*.so
+*.dylib
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+[Bb]in/
+[Oo]bj/
+
+# Projects
+*.csproj
+*.fsproj
+*.vbproj
+*.sln
+*.suo
+*.njsproj
+*.vcxproj
+
+# Profiling
+*.vsp
+*.sap
+
+# Glimpse files
+glimpse_*
+
+# SQL Server files
+*.mdf
+*.ldf
+
+# Entity Framework migrations
+Migrations
+
+# Package Manager
+*.nupkg
+*.snupkg
+**/node_modules
+
+# Misc
+.DS_Store
+.idea
+.vs/
+
+# Localhost SSL certificates
+localhost.pfx
+localhost.cer 

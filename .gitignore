@@ -50,5 +50,9 @@ CodeCoverage/
 
 # NUnit
 *.VisualState.xml
+*.nunit
 TestResult.xml
 nunit-*.xml
+
+# Node.js
+/node_modules
