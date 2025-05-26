@@ -1,8 +1,9 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+#root, .app-container {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  box-sizing: border-box;
 }
 
 .logo {
@@ -39,4 +40,289 @@
 
 .read-the-docs {
   color: #888;
+}
+
+.app-container {
+  display: grid;
+  grid-template-columns: 14rem 1fr 24rem;
+  min-height: 100vh;
+  width: 100vw;
+}
+
+.nav-sidebar {
+  grid-column: 1;
+  grid-row: 1;
+  width: 14rem;
+  background-color: #f3f4f6;
+  height: 100vh;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: sticky;
+  left: 0;
+  top: 0;
+  z-index: 10;
+}
+
+.nav-button {
+  text-align: left;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: none;
+  background: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.nav-button.active {
+  background-color: #bfdbfe;
+  font-weight: bold;
+}
+
+.main-content {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #fff;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.content-area {
+  flex: 1;
+  padding: 2rem 1rem 1rem 2rem;
+  overflow-y: auto;
+  height: 100vh;
+  text-align: left;
+  max-width: 100%;
+  background: #fff;
+}
+
+.delete-all-button {
+  background-color: #dc2626;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  border: none;
+  cursor: pointer;
+  float: right;
+  margin: 1rem 0;
+}
+
+.header {
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 1.5rem;
+}
+
+.header h1 {
+  font-size: 1.875rem;
+  font-weight: bold;
+  color: #111827;
+}
+
+.section {
+  margin: 2rem 0;
+}
+
+.section h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.unit-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.unit-item {
+  border: 1px solid #e5e7eb;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.unit-content {
+  flex: 1;
+}
+
+.unit-title {
+  font-weight: bold;
+}
+
+.show-more-button {
+  color: #3b82f6;
+  text-decoration: underline;
+  font-size: 0.875rem;
+  margin-top: 0.25rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.link-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.link-item {
+  border: 1px solid #e5e7eb;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.link-source {
+  color: #2563eb;
+}
+
+.link-description {
+  color: #92400e;
+}
+
+.link-target {
+  color: #dc2626;
+}
+
+.form-group {
+  margin-bottom: 0.5rem;
+}
+
+.input-field {
+  border: 1px solid #e5e7eb;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.select-field {
+  border: 1px solid #e5e7eb;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  margin-right: 0.5rem;
+}
+
+.add-button {
+  background-color: #3b82f6;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: none;
+  cursor: pointer;
+}
+
+.sidebar {
+  grid-column: 3;
+  grid-row: 1;
+  width: 24rem;
+  padding: 1rem;
+  border-left: 1px solid #e5e7eb;
+  background-color: white;
+  height: 100vh;
+  position: sticky;
+  right: 0;
+  top: 0;
+  z-index: 10;
+}
+
+.sidebar h2 {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.selected-list {
+  margin-bottom: 1rem;
+}
+
+.selected-item {
+  border-bottom: 1px solid #e5e7eb;
+  padding: 0.25rem 0;
+}
+
+.delete-selected-button {
+  background-color: #dc2626;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.delete-selected-button:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.unselect-all-button {
+  background-color: #6b7280;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+.unselect-all-button:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}
+
+.ontosense-container {
+  padding: 1rem;
+}
+
+.ontosense-title {
+  font-size: 1.875rem;
+  font-weight: bold;
+  color: #111827;
+  margin-bottom: 1rem;
+}
+
+.generated-units {
+  margin-top: 1rem;
+}
+
+.unit-attributes {
+  margin-top: 0.5rem;
+}
+
+.attribute-list {
+  list-style-type: disc;
+  list-style-position: inside;
+}
+
+.meaning-card {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 16px;
+  background: #fafafa;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  margin-bottom: 20px;
+}
+.meaning-title {
+  font-weight: 600;
+  font-size: 1.1em;
+  margin-bottom: 6px;
+}
+.meaning-wikipedia {
+  margin-top: 8px;
+}
+.meaning-wikipedia a {
+  color: #6366f1;
+  font-weight: 500;
+}
+.meaning-wikipedia .error {
+  color: #ef4444;
 }

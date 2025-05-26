@@ -33,7 +33,7 @@ namespace TiFlinks.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<LinkDto>> Get(int id)
+        public async Task<ActionResult<LinkDto>> Get(Guid id)
         {
             var l = await _context.Links.FindAsync(id);
             if (l == null) return NotFound();
@@ -52,13 +52,25 @@ namespace TiFlinks.API.Controllers
         [HttpPost]
         public async Task<ActionResult<LinkDto>> Create(LinkDto dto)
         {
+            var source = await _context.InformationUnits.FindAsync(dto.SourceId);
+            if (source == null) return BadRequest("Source information unit not found");
+
+            var target = await _context.InformationUnits.FindAsync(dto.TargetId);
+            if (target == null) return BadRequest("Target information unit not found");
+
+            var linkType = await _context.LinkTypes.FindAsync(dto.LinkTypeId);
+            if (linkType == null) return BadRequest("Link type not found");
+
             var link = new Link
             {
                 SourceId = dto.SourceId,
                 TargetId = dto.TargetId,
                 LinkTypeId = dto.LinkTypeId,
                 Description = dto.Description,
-                CreatedAt = DateTime.UtcNow
+                CreatedAt = DateTime.UtcNow,
+                Source = source,
+                Target = target,
+                LinkType = linkType
             };
             _context.Links.Add(link);
             await _context.SaveChangesAsync();
@@ -68,21 +80,34 @@ namespace TiFlinks.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, LinkDto dto)
+        public async Task<IActionResult> Update(Guid id, LinkDto dto)
         {
             var link = await _context.Links.FindAsync(id);
             if (link == null) return NotFound();
+
+            var source = await _context.InformationUnits.FindAsync(dto.SourceId);
+            if (source == null) return BadRequest("Source information unit not found");
+
+            var target = await _context.InformationUnits.FindAsync(dto.TargetId);
+            if (target == null) return BadRequest("Target information unit not found");
+
+            var linkType = await _context.LinkTypes.FindAsync(dto.LinkTypeId);
+            if (linkType == null) return BadRequest("Link type not found");
+
             link.SourceId = dto.SourceId;
             link.TargetId = dto.TargetId;
             link.LinkTypeId = dto.LinkTypeId;
             link.Description = dto.Description;
             link.UpdatedAt = DateTime.UtcNow;
+            link.Source = source;
+            link.Target = target;
+            link.LinkType = linkType;
             await _context.SaveChangesAsync();
             return NoContent();
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(Guid id)
         {
             var link = await _context.Links.FindAsync(id);
             if (link == null) return NotFound();

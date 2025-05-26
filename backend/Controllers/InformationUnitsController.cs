@@ -32,7 +32,7 @@ namespace TiFlinks.API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<InformationUnitDto>> Get(int id)
+        public async Task<ActionResult<InformationUnitDto>> Get(Guid id)
         {
             var u = await _context.InformationUnits.FindAsync(id);
             if (u == null) return NotFound();
@@ -65,7 +65,7 @@ namespace TiFlinks.API.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int id, InformationUnitDto dto)
+        public async Task<IActionResult> Update(Guid id, InformationUnitDto dto)
         {
             var unit = await _context.InformationUnits.FindAsync(id);
             if (unit == null) return NotFound();
@@ -78,11 +78,20 @@ namespace TiFlinks.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        public async Task<IActionResult> Delete(Guid id)
         {
             var unit = await _context.InformationUnits.FindAsync(id);
             if (unit == null) return NotFound();
             _context.InformationUnits.Remove(unit);
+            await _context.SaveChangesAsync();
+            return NoContent();
+        }
+
+        [HttpDelete("all")]
+        public async Task<IActionResult> DeleteAll()
+        {
+            _context.Links.RemoveRange(_context.Links);
+            _context.InformationUnits.RemoveRange(_context.InformationUnits);
             await _context.SaveChangesAsync();
             return NoContent();
         }

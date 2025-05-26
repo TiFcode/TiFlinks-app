@@ -53,6 +53,18 @@ TiFlinks is a personal knowledge base application that allows you to create, man
    - Frontend: `npm run dev` (runs on http://localhost:5173)
    - Backend: `dotnet run` (runs on http://localhost:5000)
 
+
+5. Install Ollama
+
+6. Configure Ollama
+
+- Open cmd.exe
+- Run the following commands:
+
+setx OLLAMA_DEFAULT_MODEL "tif-custom-llama:latest"
+setx OLLAMA_KEEP_ALIVE "-1"
+
+
 ### Docker Deployment
 
 ```bash
